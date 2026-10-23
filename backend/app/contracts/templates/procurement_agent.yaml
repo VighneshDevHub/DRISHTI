@@ -1,0 +1,21 @@
+role: procurement_agent
+version: 1
+purpose: "Check supplier prices and create purchase requests"
+allowed_tools:
+  - supplier_api.get_price
+  - supplier_api.list_catalog
+  - purchase.create_request
+  - erp.read_orders
+  - doc.read              # supplier documents only (HR/payroll paths are reclassified and denied)
+allowed_resource_classes: [supplier_data, purchase_requests, documents]
+denied_resource_classes: [hr_data, payroll, source_code, customer_pii]
+data_sensitivity_ceiling: internal
+egress_allowlist: [api.supplier-a.com, api.supplier-b.com, erp.internal]
+typical_sequences:
+  - [doc.read, supplier_api.get_price, purchase.create_request]
+  - [supplier_api.list_catalog, supplier_api.get_price, purchase.create_request]
+  - [erp.read_orders, supplier_api.get_price]
+budgets:
+  actions_per_hour: 120
+  new_resource_classes_per_week: 0
+  bytes_out_per_hour: 5MB

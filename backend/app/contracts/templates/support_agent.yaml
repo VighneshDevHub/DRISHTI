@@ -1,0 +1,19 @@
+role: support_agent
+version: 1
+purpose: "Answer customer support tickets and look up customer account details"
+allowed_tools:
+  - support.get_ticket
+  - support.reply_ticket
+  - crm.read_customer
+  - doc.read
+allowed_resource_classes: [tickets, customer_pii, documents]
+denied_resource_classes: [hr_data, payroll, source_code, purchase_requests]
+data_sensitivity_ceiling: confidential
+egress_allowlist: [support.company.com, mail.company.com]
+typical_sequences:
+  - [support.get_ticket, crm.read_customer, support.reply_ticket]
+  - [support.get_ticket, doc.read, support.reply_ticket]
+budgets:
+  actions_per_hour: 200
+  new_resource_classes_per_week: 0
+  bytes_out_per_hour: 2MB

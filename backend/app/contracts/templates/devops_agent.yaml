@@ -1,0 +1,18 @@
+role: devops_agent
+version: 1
+purpose: "Read service logs and restart unhealthy internal services"
+allowed_tools:
+  - devops.read_logs
+  - devops.restart_service
+  - doc.read
+allowed_resource_classes: [infrastructure, logs, documents]
+denied_resource_classes: [hr_data, payroll, customer_pii, purchase_requests]
+data_sensitivity_ceiling: internal
+egress_allowlist: ["*.internal"]
+typical_sequences:
+  - [devops.read_logs, devops.restart_service]
+  - [devops.read_logs, doc.read, devops.restart_service]
+budgets:
+  actions_per_hour: 60
+  new_resource_classes_per_week: 0
+  bytes_out_per_hour: 1MB

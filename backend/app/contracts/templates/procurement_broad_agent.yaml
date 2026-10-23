@@ -1,0 +1,24 @@
+# DELIBERATELY OVER-BROAD example (used by scenario S4b). Real teams write contracts
+# like this when they are in a hurry: wildcards instead of a list. Everything below
+# is "allowed", so role-fit alone sees nothing wrong. `GET /contracts/{role}/blast-radius`
+# warns about it, and the drift lens is what catches abuse of the slack.
+role: procurement_broad_agent
+version: 1
+purpose: "Check supplier prices and create purchase requests"
+allowed_tools:
+  - "supplier_api.*"
+  - "erp.*"
+  - "purchase.*"
+  - doc.read
+allowed_resource_classes: [supplier_data, supplier_contacts, purchase_requests, invoices, vendor_terms, documents]
+denied_resource_classes: [hr_data, payroll, source_code, customer_pii]
+data_sensitivity_ceiling: internal
+egress_allowlist: [api.supplier-a.com, api.supplier-b.com, erp.internal]
+typical_sequences:
+  - [doc.read, supplier_api.get_price, purchase.create_request]
+  - [supplier_api.list_catalog, supplier_api.get_price, purchase.create_request]
+  - [erp.read_orders, supplier_api.get_price]
+budgets:
+  actions_per_hour: 120
+  new_resource_classes_per_week: 0
+  bytes_out_per_hour: 5MB
