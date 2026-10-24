@@ -245,7 +245,7 @@ export default function ApprovalsPage() {
                 Try a Demo Request in your video:
               </div>
               <div className="text-xs text-slate-300">
-                Click a button to see how the safety check pauses an agent's request:
+                Click a button to see how the safety check pauses an agent&apos;s request:
               </div>
             </div>
           </div>
