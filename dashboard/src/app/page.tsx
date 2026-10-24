@@ -364,10 +364,12 @@ export default function HomePage() {
         {/* ------------------------------------------------------------- */}
         <div
           id="product"
-          className="mt-14 w-full max-w-5xl rounded-2xl bg-[#0c0d16]/95 border border-white/15 shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_60px_rgba(139,92,246,0.15)] backdrop-blur-2xl overflow-hidden text-left relative"
+          className="mt-16 w-full max-w-5xl rounded-2xl bg-[#0c0d16]/95 border border-white/15 shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_60px_rgba(139,92,246,0.15)] backdrop-blur-2xl overflow-hidden text-left relative"
         >
           {/* Subtle Top Rim Highlight */}
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-60" />
+          {/* Luminous Ambient Halo behind Showcase */}
+          <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-b from-purple-500/20 via-transparent to-purple-600/10 blur-xl -z-10" />
 
           <div className="flex flex-col md:flex-row min-h-[640px]">
             {/* Left Mini-Sidebar inside Dashboard Mockup */}
