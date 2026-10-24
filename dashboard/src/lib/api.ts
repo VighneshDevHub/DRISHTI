@@ -17,6 +17,7 @@ export type Agent = {
 export type EventItem = {
   id: string;
   agent_id: string;
+  role?: string;
   tool: string;
   resource: string | null;
   destination: string | null;
@@ -66,6 +67,7 @@ export type ToolItem = {
   resource_class: string;
   sensitivity: string;
   sink_type?: string;
+  is_irreversible?: boolean;
 };
 
 export type DecoyItem = {

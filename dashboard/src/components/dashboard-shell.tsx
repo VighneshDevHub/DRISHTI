@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Activity, AlertTriangle, Database, FileText, Gauge, Lock, Shield, ShieldCheck, ShieldAlert, Sparkles, Wrench, Settings, Bell, PanelLeftClose, PanelLeftOpen } from "lucide-react";
+import { Activity, AlertTriangle, Database, FileText, Gauge, Lock, Shield, ShieldCheck, ShieldAlert, Sparkles, Wrench, Settings, Bell, PanelLeftClose, PanelLeftOpen, RotateCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import { fetchJson, WS_URL } from "@/lib/api";
 
@@ -35,7 +35,14 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [live, setLive] = useState(false);
   const [lastRefresh, setLastRefresh] = useState<string>("not yet");
   const [refreshKey, setRefreshKey] = useState(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const handleRefresh = () => {
+    setIsRefreshing(true);
+    setRefreshKey((k) => k + 1);
+    window.setTimeout(() => setIsRefreshing(false), 600);
+  };
 
   useEffect(() => {
     let isCancelled = false;
@@ -165,7 +172,10 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
             {!online ? "MODE UNKNOWN" : mode === "ENFORCE" ? "ENFORCEMENT ACTIVE" : `${mode} MODE · OBSERVE ONLY`}
           </span>
           <span className="runtime-updated">Backend check: {lastRefresh}</span>
-          <button className="refresh-btn" onClick={() => setRefreshKey((k) => k + 1)}>Refresh data</button>
+          <button className="refresh-btn" onClick={handleRefresh} disabled={isRefreshing} title="Refresh data">
+            <RotateCw size={12} className={isRefreshing ? "animate-spin" : ""} />
+            <span>{isRefreshing ? "Refreshing…" : "Refresh data"}</span>
+          </button>
         </div>
 
         <div className="page-shell" key={refreshKey}>{children}</div>
