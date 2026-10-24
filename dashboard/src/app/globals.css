@@ -1882,3 +1882,116 @@ td a:hover {
 .marketing-site ::-webkit-scrollbar-thumb:hover {
   background: #6e44ff;
 }
+
+/* ==========================================================================
+   ADVANCED DASHBOARD VISUALIZATIONS & RECHARTS STYLING
+   ========================================================================== */
+
+.custom-recharts-tooltip {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  color: #f8fafc !important;
+  font-size: 11px !important;
+  line-height: 1.4 !important;
+  pointer-events: none;
+  z-index: 50;
+  min-width: 140px;
+}
+
+.custom-recharts-tooltip-title {
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 4px;
+  font-size: 11px;
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 3px;
+}
+
+.custom-recharts-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 3px;
+}
+
+.overview-grid-equal {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.overview-grid-tri {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 1080px) {
+  .overview-grid-equal,
+  .overview-grid-tri {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   REACT FLOW CANVAS & CONTROLS SLEEK DARK STYLING
+   ========================================================================== */
+
+.react-flow__panel {
+  margin: 16px !important;
+}
+
+.react-flow__controls {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(18, 20, 28, 0.9) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+  width: auto !important;
+  max-width: 36px !important;
+}
+
+.react-flow__controls-button {
+  background: rgba(18, 20, 28, 0.92) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-right: none !important;
+  color: #94a3b8 !important;
+  fill: #94a3b8 !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 6px !important;
+  transition: all 0.15s ease !important;
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none !important;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(30, 41, 59, 0.95) !important;
+  color: #10b981 !important;
+  fill: #10b981 !important;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  max-width: 14px !important;
+  max-height: 14px !important;
+}
+
+.react-flow__minimap {
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(15, 17, 26, 0.92) !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+

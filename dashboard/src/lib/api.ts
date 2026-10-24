@@ -20,6 +20,8 @@ export type EventItem = {
   role?: string;
   tool: string;
   resource: string | null;
+  resource_class?: string | null;
+  sensitivity?: number;
   destination: string | null;
   risk: number;
   band: Band;
